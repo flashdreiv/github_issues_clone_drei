@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import githubIssues from "../apis/githubIssues";
 
 const useGitIssues = ({ currentPage, filter }) => {
   const [repoIssues, setRepoIssues] = useState([]);
-  async function fetchIssues() {
+  const fetchIssues = useCallback(async () => {
     const response = await githubIssues.get("/issues", {
       params: {
         per_page: 15,
@@ -12,10 +12,10 @@ const useGitIssues = ({ currentPage, filter }) => {
       },
     });
     setRepoIssues(response.data);
-  }
+  }, [currentPage, filter]);
   useEffect(() => {
     fetchIssues(currentPage, filter);
-  }, [currentPage, filter]);
+  }, [currentPage, filter, fetchIssues]);
 
   return [repoIssues, fetchIssues];
 };
