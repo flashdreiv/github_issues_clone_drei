@@ -9,6 +9,11 @@ Starting the app:
 2. Run the command "npm start"
 
 Features include:
-Labels and timestamp
-Pagination
-Search filter 
+- Labels and timestamp
+- Persistent Pagination
+- Api Calls on github api
+
+# Demo
+![github_issues_clone](https://user-images.githubusercontent.com/69245706/143970856-9a67e9f4-0819-4751-946e-d2e174ea838e.gif)
+
+
